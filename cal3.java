@@ -51,16 +51,16 @@ int indexfound = input.indexOf(operator);
 
 String first = input.substring(0,indexfound).trim();
 String second = input.substring(indexfound+1).trim();
-double num= Double.parseDouble(first);
+double num1= Double.parseDouble(first);
 double num2 = Double.parseDouble(second);
 double result=0.0;
 switch(operator)
 {
 case'+':
-result = num+num2;
+result = num1+num2;
 break;
 case'-':
-result = num+num2;
+result = num1+num2;
 break;
 }
 return result;
