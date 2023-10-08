@@ -18,16 +18,16 @@ char opeartor = input.charAt(parts[0].length());
 double result =0.0;
 switch(opeartor)
 {
-case"+":
+case'+':
 result = num1+num2;
 break;
-case"-":
+case'-':
 result = num1-num2;
 break;
-case"*":
+case'*':
 result = num1*num2;
 break;
-case"/":
+case'/':
 if(num2==0)
 {
 System.out.println("not allowed");
