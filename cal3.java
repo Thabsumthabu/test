@@ -63,6 +63,5 @@ return numbers[0]/numbers[1];
 default:
 return 0.0;
 }
-
 }
 }
