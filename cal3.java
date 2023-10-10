@@ -1,83 +1,67 @@
-import java.util.Scanner;
-public class cal5
+import java.util.*;
+public class cal3
 {
-public static void main(String args[])
+public static void main(String[] arggs)
 {
 Scanner s = new Scanner(System.in);
-
-System.out.println("enter the operaation");
+while(true)
+{
+System.out.println("enter the operation");
 String input = s.nextLine();
-
-char operator = calfound(input);
-//double varibledeclartion = variableDec(input);
-  double results = calculatorSwitch(operator,input);
- System.out.println("result is" +results);
+char operator = charFound(input);
+double result = calFound(input,operator);
+System.out.println("result" +result);
+ 
 }
- static char calfound(String input)
+}
+
+static char charFound(String input)
 {
 char operator = ' ';
-int indexfound = -1;
-
-for(int i=0;i<input.length();i++)
+for(int i=0;i< input.length();i++)
 {
 char c = input.charAt(i);
-if(c == '+')
+int indexfound = -1;
+if(c == '+' || c == '-' || c== '*' || c == '/')
 {
 operator = c;
 indexfound = i;
-break;
-}
-else if(c == '-')
-{
-operator = c;
-indexfound = i;
-break;
-}
-else if(c == '*')
-{
-operator = c;
-indexfound = i;
-break;
-}
-else if(c == '/')
-{
-operator = c;
-indexfound = i;
-break;
 }
 }
-if(indexfound == -1 || indexfound > 3)
-{
-System.out.println("inavlid");
-return ' ';
-}
-
 return operator;
 }
-static double[] variableDec( String input,char operator)
+static double[] numberFound(String input,char operator)
 {
-int indexfound = input.indexOf(operator);
-        if (indexfound == -1) {
-            return 0.0; 
-        }
-String first = input.substring(0,indexfound).trim();
-String second = input.substring(indexfound+1).trim();
-double num= Double.parseDouble(first);
-double num2 = Double.parseDouble(second);
-//double result=0.0;
-return new double[] { num, num2};
+int index = input.indexOf(operator);
+if(index == -1)
+{
+return new double[] {0.0,0.0};
+}
+double num1 = Double.parseDouble(input.substring(0,index).trim());
+double num2 = Double.parseDouble(input.substring(index+1).trim());
+return new double[] {num1,num2};
 }
 
-static double calculatorSwitch(char operator,String input)
+static double calFound(String input,char operator)
 {
-double[] numbers = variableDec(input,operator);
+double[] numbers = numberFound(input,operator);
 switch(operator)
 {
 case'+':
 return numbers[0]+numbers[1];
-
 case'-':
-return  numbers[0]-numbers[1];
+return numbers[0]-numbers[1];
+case'*':
+return numbers[0]*numbers[1];
+case '/':
+if(numbers[1] == 0)
+{
+System.out.println("not found");
+return ' ';
+}
+return numbers[0]/numbers[1];
+default:
+return 0.0;
 }
 
 }
