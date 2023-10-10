@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class cal3
+public class cal5
 {
 public static void main(String args[])
 {
@@ -9,6 +9,7 @@ System.out.println("enter the operaation");
 String input = s.nextLine();
 
 char operator = calfound(input);
+//double varibledeclartion = variableDec(input);
   double results = calculatorSwitch(operator,input);
  System.out.println("result is" +results);
 }
@@ -32,6 +33,18 @@ operator = c;
 indexfound = i;
 break;
 }
+else if(c == '*')
+{
+operator = c;
+indexfound = i;
+break;
+}
+else if(c == '/')
+{
+operator = c;
+indexfound = i;
+break;
+}
 }
 if(indexfound == -1 || indexfound > 3)
 {
@@ -41,28 +54,31 @@ return ' ';
 
 return operator;
 }
-static double calculatorSwitch(char operator,String input)
+static double[] variableDec( String input,char operator)
 {
 int indexfound = input.indexOf(operator);
         if (indexfound == -1) {
             return 0.0; 
         }
-
-
 String first = input.substring(0,indexfound).trim();
 String second = input.substring(indexfound+1).trim();
-double num1= Double.parseDouble(first);
+double num= Double.parseDouble(first);
 double num2 = Double.parseDouble(second);
-double result=0.0;
+//double result=0.0;
+return new double[] { num, num2};
+}
+
+static double calculatorSwitch(char operator,String input)
+{
+double[] numbers = variableDec(input,operator);
 switch(operator)
 {
 case'+':
-result = num1+num2;
-break;
+return numbers[0]+numbers[1];
+
 case'-':
-result = num1+num2;
-break;
+return  numbers[0]-numbers[1];
 }
-return result;
+
 }
 }
