@@ -10,8 +10,7 @@ System.out.println("enter the operation");
 String input = s.nextLine();
 char operator = charFound(input);
 double result = calFound(input,operator);
-System.out.println("result" +result);
- 
+System.out.println("result" +result); 
 }
 }
 
